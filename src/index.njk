@@ -123,7 +123,7 @@ description: Authentic Turkish and Mediterranean cuisine in the heart of Miami B
 </section>
 
 {# ========== MENU ========== #}
-<section id="menu" class="py-24 bg-warm-white relative overflow-hidden">
+<section id="menu" class="py-24 bg-warm-white relative">
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-16 fade-up">
       <p class="text-terracotta text-sm tracking-[0.3em] uppercase mb-4 font-medium">The Menu</p>
@@ -145,7 +145,7 @@ description: Authentic Turkish and Mediterranean cuisine in the heart of Miami B
         <button data-next="appetizers" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10">{{ arrowRight | safe }}</button>
       </div>
     </div>
-    <div data-slider="appetizers" class="slider-container max-w-7xl mx-auto px-6">
+    <div data-slider="appetizers" class="slider-container">
       <div class="slider-track gap-5">
         {% set appetizers = [
           { name: "Hummus", desc: "Ground chick peas, tahnina, fresh lemon juice, fresh garlic, extra virgin olive oil, and Mediterranean herbs", price: "$8.50" },
@@ -185,7 +185,7 @@ description: Authentic Turkish and Mediterranean cuisine in the heart of Miami B
       </div>
     </div>
     <p class="max-w-7xl mx-auto px-6 text-charcoal-light text-sm mb-6">All Entrees are Served with Side Salad, Rice, Pita Bread and Tzatziki Sauce</p>
-    <div data-slider="entrees" class="slider-container max-w-7xl mx-auto px-6">
+    <div data-slider="entrees" class="slider-container">
       <div class="slider-track gap-5">
         {% set entrees = [
           { name: "Doner Gyro", desc: "Layers of marinated ground and sliced, beef and lamb mixed wrapped around the large vertical split and grilled in front of an ingenious herd of charcoal fire", price: "$20.99" },
@@ -246,7 +246,7 @@ description: Authentic Turkish and Mediterranean cuisine in the heart of Miami B
         <button data-next="salads" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10">{{ arrowRight | safe }}</button>
       </div>
     </div>
-    <div data-slider="salads" class="slider-container max-w-7xl mx-auto px-6">
+    <div data-slider="salads" class="slider-container">
       <div class="slider-track gap-5">
         {% set salads = [
           { name: "Sheppard Salad", desc: "Chopped tomato, bell peppers, onions, cucumbers, parsley, sumac, and traditional Turkish dressing", price: "$14.99" },
@@ -280,7 +280,7 @@ description: Authentic Turkish and Mediterranean cuisine in the heart of Miami B
       </div>
     </div>
     <p class="max-w-7xl mx-auto px-6 text-charcoal-light text-sm mb-6">Served with French Fries</p>
-    <div data-slider="sandwiches" class="slider-container max-w-7xl mx-auto px-6">
+    <div data-slider="sandwiches" class="slider-container">
       <div class="slider-track gap-5">
         {% set sandwiches = [
           { name: "Chicken", sandwich: "$12.99", wrap: "$13.99" },

@@ -20,6 +20,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 .hero-gradient {
@@ -68,7 +69,12 @@ html {
 /* Slider */
 .slider-container {
   position: relative;
-  overflow: hidden;
+  padding-left: 1.5rem;
+}
+@media (min-width: 768px) {
+  .slider-container {
+    padding-left: max(1.5rem, calc((100vw - 72rem) / 2 + 1.5rem));
+  }
 }
 
 .slider-track {
