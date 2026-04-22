@@ -60,7 +60,9 @@
         return this.cards[0].offsetWidth + gap;
       }
       getVisibleWidth() {
-        return window.innerWidth - this.track.getBoundingClientRect().left;
+        const containerLeft = this.container.getBoundingClientRect().left;
+        const paddingLeft = parseFloat(getComputedStyle(this.container).paddingLeft) || 0;
+        return window.innerWidth - containerLeft - paddingLeft;
       }
       getMaxOffset() {
         const gap = parseFloat(getComputedStyle(this.track).gap) || 20;
