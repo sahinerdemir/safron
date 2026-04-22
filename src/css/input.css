@@ -65,30 +65,38 @@ html {
   animation: float 3s ease-in-out infinite;
 }
 
-.slider-padding {
-  padding-left: 1.5rem;
-}
-@media (min-width: 768px) {
-  .slider-padding {
-    padding-left: max(1.5rem, calc((100vw - 72rem) / 2 + 1.5rem));
-  }
+/* Slider */
+.slider-container {
+  position: relative;
+  overflow: hidden;
 }
 
 .slider-track {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  scroll-snap-type: x mandatory;
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  cursor: grab;
 }
-.slider-track::-webkit-scrollbar {
-  display: none;
+.slider-track:active {
+  cursor: grabbing;
+}
+.slider-track.is-dragging {
+  transition: none;
 }
 
 .slider-arrow {
   cursor: pointer;
   user-select: none;
+  transition: all 0.2s ease;
 }
 .slider-arrow:active {
   transform: scale(0.92);
+}
+.slider-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.slider-arrow:disabled:active {
+  transform: none;
 }
 
 .divider-ornament {

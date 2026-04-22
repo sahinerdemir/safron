@@ -26,14 +26,82 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    function slideLeft(id) {
-      const el = document.getElementById(id);
-      if (el) el.scrollBy({ left: -320, behavior: 'smooth' });
+    // Deel-style transform slider
+    class Slider {
+      constructor(id) {
+        this.container = document.querySelector(`[data-slider="${id}"]`);
+        if (!this.container) return;
+        this.track = this.container.querySelector('.slider-track');
+        this.cards = [...this.track.children];
+        this.prevBtn = document.querySelector(`[data-prev="${id}"]`);
+        this.nextBtn = document.querySelector(`[data-next="${id}"]`);
+        this.index = 0;
+        this.dragStartX = 0;
+        this.dragOffset = 0;
+        this.isDragging = false;
+
+        this.prevBtn?.addEventListener('click', () => this.prev());
+        this.nextBtn?.addEventListener('click', () => this.next());
+
+        this.track.addEventListener('mousedown', e => this.onDragStart(e));
+        this.track.addEventListener('touchstart', e => this.onDragStart(e), { passive: true });
+        window.addEventListener('mousemove', e => this.onDragMove(e));
+        window.addEventListener('touchmove', e => this.onDragMove(e), { passive: false });
+        window.addEventListener('mouseup', () => this.onDragEnd());
+        window.addEventListener('touchend', () => this.onDragEnd());
+
+        window.addEventListener('resize', () => this.goTo(this.index));
+        this.updateButtons();
+      }
+      getCardWidth() {
+        if (!this.cards.length) return 0;
+        const style = getComputedStyle(this.track);
+        const gap = parseFloat(style.gap) || 20;
+        return this.cards[0].offsetWidth + gap;
+      }
+      getMaxIndex() {
+        const containerW = this.container.offsetWidth;
+        const totalW = this.cards.length * this.getCardWidth() - (parseFloat(getComputedStyle(this.track).gap) || 20);
+        return Math.max(0, Math.ceil((totalW - containerW) / this.getCardWidth()));
+      }
+      goTo(i) {
+        this.index = Math.max(0, Math.min(i, this.getMaxIndex()));
+        this.track.style.transform = `translateX(-${this.index * this.getCardWidth()}px)`;
+        this.updateButtons();
+      }
+      prev() { this.goTo(this.index - 1); }
+      next() { this.goTo(this.index + 1); }
+      updateButtons() {
+        if (this.prevBtn) this.prevBtn.disabled = this.index <= 0;
+        if (this.nextBtn) this.nextBtn.disabled = this.index >= this.getMaxIndex();
+      }
+      onDragStart(e) {
+        this.isDragging = true;
+        this.dragStartX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+        this.dragOffset = 0;
+        this.track.classList.add('is-dragging');
+      }
+      onDragMove(e) {
+        if (!this.isDragging) return;
+        const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+        this.dragOffset = x - this.dragStartX;
+        const base = this.index * this.getCardWidth();
+        this.track.style.transform = `translateX(${-base + this.dragOffset}px)`;
+      }
+      onDragEnd() {
+        if (!this.isDragging) return;
+        this.isDragging = false;
+        this.track.classList.remove('is-dragging');
+        const threshold = this.getCardWidth() * 0.25;
+        if (this.dragOffset < -threshold) this.next();
+        else if (this.dragOffset > threshold) this.prev();
+        else this.goTo(this.index);
+      }
     }
-    function slideRight(id) {
-      const el = document.getElementById(id);
-      if (el) el.scrollBy({ left: 320, behavior: 'smooth' });
-    }
+
+    document.querySelectorAll('[data-slider]').forEach(el => {
+      new Slider(el.dataset.slider);
+    });
 
     // Nav scroll behavior — transparent on hero, solid on scroll
     const nav = document.getElementById('main-nav');
