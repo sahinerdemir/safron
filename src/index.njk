@@ -110,170 +110,195 @@ description: Authentic Turkish and Mediterranean cuisine in the heart of Miami B
 </section>
 
 {# ========== MENU ========== #}
-<section id="menu" class="py-24 bg-warm-white relative overflow-hidden">
+<section id="menu" class="py-24 bg-warm-white relative">
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-16 fade-up">
       <p class="text-terracotta text-sm tracking-[0.3em] uppercase mb-4 font-medium">The Menu</p>
       <h2 class="font-display text-4xl md:text-5xl font-bold text-charcoal">Taste the <span class="text-terracotta">Mediterranean</span></h2>
     </div>
+  </div>
 
-    {# --- Macro for slider --- #}
-    {# Each slider: heading + arrows on same row, then horizontal scroll track #}
-
-    {# Appetizers #}
-    <div class="mb-14 fade-up">
-      <div class="flex items-center justify-between mb-6">
-        <h3 class="font-display text-2xl font-bold text-gold">Appetizers</h3>
-        <div class="flex gap-2">
-          <button onclick="slideLeft('appetizers')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
-            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-          </button>
-          <button onclick="slideRight('appetizers')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
-            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-          </button>
-        </div>
+  {# Appetizers — full width slider #}
+  <div class="mb-16 fade-up">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between mb-6">
+      <h3 class="font-display text-2xl font-bold text-gold">Appetizers</h3>
+      <div class="flex gap-2">
+        <button onclick="slideLeft('appetizers')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
+          <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button onclick="slideRight('appetizers')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
+          <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
       </div>
-      <div id="appetizers" class="slider-track flex gap-5 overflow-x-auto scroll-smooth pb-4">
-        {% set appetizers = [
-          { name: "Hummus", desc: "Ground chick peas, tahnina, fresh lemon juice, fresh garlic, extra virgin olive oil, and Mediterranean herbs", price: "$8.50" },
-          { name: "Tzatziki", desc: "Yogurt, fresh garlic, extra virgin olive oil, cucumber, dill and herbs", price: "$9.50" },
-          { name: "Babaganush", desc: "Fresh roasted eggplant puree, fresh garlic, extra virgin olive oil, roasted red peppers", price: "$9.50" },
-          { name: "Saksuka", desc: "Pan fried eggplant, green pepper, onion, fresh garlic, fresh tomatoes, and herbs", price: "$9.50" },
-          { name: "Falafel", desc: "Ground chick peas, parsley, scallions, cumin, cilantro, onion, and Mediterranean herbs", price: "$9.50" },
-          { name: "Tabbuli", desc: "Italian parsley, tomatoes, cucumbers, fresh lemon, extra virgin olive oil, and herbs", price: "$9.50" },
-          { name: "Stuffed Grape Leaves", desc: "Stuffed with rice, pine nuts, and fresh herbs, served cold tzatziki sauce", price: "$9" },
-          { name: "Cigar Rolls", desc: "Cigar shaped crispy pastries stuffed with feta cheese and parsley served with tzatziki sauce", price: "$10" },
-          { name: "Meze Sampler", desc: "Hummus, babaganush, tabouli, Saksuka, stuffed grape leave, falafel, served with hot pita bread", price: "$16.99" },
-          { name: "Lentil Soup", desc: "Red lentils, onion, olive oil, Turkish herbs", price: "$8" }
-        ] %}
-        {% for item in appetizers %}
-        <div class="menu-card rounded-2xl p-6 min-w-[280px] max-w-[300px] flex-shrink-0 snap-start">
-          <div class="flex justify-between items-start mb-3">
+    </div>
+    <div id="appetizers" class="slider-track flex gap-5 overflow-x-auto scroll-smooth pb-4 pl-6 md:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))]">
+      {% set appetizers = [
+        { name: "Hummus", desc: "Ground chick peas, tahnina, fresh lemon juice, fresh garlic, extra virgin olive oil, and Mediterranean herbs", price: "$8.50" },
+        { name: "Tzatziki", desc: "Yogurt, fresh garlic, extra virgin olive oil, cucumber, dill and herbs", price: "$9.50" },
+        { name: "Babaganush", desc: "Fresh roasted eggplant puree, fresh garlic, extra virgin olive oil, roasted red peppers", price: "$9.50" },
+        { name: "Saksuka", desc: "Pan fried eggplant, green pepper, onion, fresh garlic, fresh tomatoes, and herbs", price: "$9.50" },
+        { name: "Falafel", desc: "Ground chick peas, parsley, scallions, cumin, cilantro, onion, and Mediterranean herbs", price: "$9.50" },
+        { name: "Tabbuli", desc: "Italian parsley, tomatoes, cucumbers, fresh lemon, extra virgin olive oil, and herbs", price: "$9.50" },
+        { name: "Stuffed Grape Leaves", desc: "Stuffed with rice, pine nuts, and fresh herbs, served cold tzatziki sauce", price: "$9" },
+        { name: "Cigar Rolls", desc: "Cigar shaped crispy pastries stuffed with feta cheese and parsley served with tzatziki sauce", price: "$10" },
+        { name: "Meze Sampler", desc: "Hummus, babaganush, tabouli, Saksuka, stuffed grape leave, falafel, served with hot pita bread", price: "$16.99" },
+        { name: "Lentil Soup", desc: "Red lentils, onion, olive oil, Turkish herbs", price: "$8" }
+      ] %}
+      {% for item in appetizers %}
+      <div class="menu-card rounded-2xl min-w-[280px] max-w-[300px] flex-shrink-0 snap-start overflow-hidden">
+        <div class="h-44 bg-cream-dark flex items-center justify-center">
+          <svg class="w-12 h-12 text-gold/30" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/></svg>
+        </div>
+        <div class="p-5">
+          <div class="flex justify-between items-start mb-2">
             <h4 class="font-display text-lg font-semibold text-charcoal">{{ item.name }}</h4>
-            <span class="text-terracotta font-semibold whitespace-nowrap ml-4">{{ item.price }}</span>
+            <span class="text-terracotta font-semibold whitespace-nowrap ml-3">{{ item.price }}</span>
           </div>
           <p class="text-charcoal-light text-sm leading-relaxed">{{ item.desc }}</p>
         </div>
-        {% endfor %}
+      </div>
+      {% endfor %}
+      <div class="min-w-[1px] flex-shrink-0"></div>
+    </div>
+  </div>
+
+  {# Entrees — full width slider #}
+  <div class="mb-16 fade-up">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between mb-2">
+      <h3 class="font-display text-2xl font-bold text-gold">Entrees</h3>
+      <div class="flex gap-2">
+        <button onclick="slideLeft('entrees')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
+          <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button onclick="slideRight('entrees')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
+          <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
       </div>
     </div>
-
-    {# Entrees #}
-    <div class="mb-14 fade-up">
-      <div class="flex items-center justify-between mb-2">
-        <h3 class="font-display text-2xl font-bold text-gold">Entrees</h3>
-        <div class="flex gap-2">
-          <button onclick="slideLeft('entrees')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
-            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-          </button>
-          <button onclick="slideRight('entrees')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
-            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-          </button>
+    <p class="max-w-7xl mx-auto px-6 text-charcoal-light text-sm mb-6">All Entrees are Served with Side Salad, Rice, Pita Bread and Tzatziki Sauce</p>
+    <div id="entrees" class="slider-track flex gap-5 overflow-x-auto scroll-smooth pb-4 pl-6 md:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))]">
+      {% set entrees = [
+        { name: "Doner Gyro", desc: "Layers of marinated ground and sliced, beef and lamb mixed wrapped around the large vertical split and grilled in front of an ingenious herd of charcoal fire", price: "$20.99" },
+        { name: "Adana Kebab", desc: "Ground lamb and beef mixed flavored with red bell peppers, onion, and special herbs", price: "$20.99" },
+        { name: "Chicken Kebab", desc: "Tender chunks of chicken breast marinated with Chef's own blend of herbs", price: "$20.99" },
+        { name: "Kofte Kebab", desc: "Ground lamb and beef mixed flavored with parsley, onion, and special herbs", price: "$20.99" },
+        { name: "Grilled Salmon", desc: "Served with side salad, rice, pita bread and Tzatziki sauce", price: "$25.99" },
+        { name: "Lamb Shish Kebab", desc: "Special marinated cubes of baby lamb grilled to delight on skewers", price: "$23.99" },
+        { name: "Lamb Chops", desc: "Perfectly marinated grilled baby lamb chops", price: "$35.99" },
+        { name: "Falafel Plate", desc: "Garlic, onion, parsley, ground chick peas, zukkini, and special herbs", price: "$18.99" },
+        { name: "Mix Grill Platter", desc: "1 pc lamb chop, 2 pc chicken, 2 pc lambs, 1 pc kofte, and gyro", price: "$39.99" },
+        { name: "Skirt Steak", desc: "Served with side salad, rice, pita bread and Tzatziki sauce", price: "$25.99" }
+      ] %}
+      {% for item in entrees %}
+      <div class="menu-card rounded-2xl min-w-[280px] max-w-[300px] flex-shrink-0 snap-start overflow-hidden">
+        <div class="h-44 bg-cream-dark flex items-center justify-center">
+          <svg class="w-12 h-12 text-gold/30" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/></svg>
         </div>
-      </div>
-      <p class="text-charcoal-light text-sm mb-6">All Entrees are Served with Side Salad, Rice, Pita Bread and Tzatziki Sauce</p>
-      <div id="entrees" class="slider-track flex gap-5 overflow-x-auto scroll-smooth pb-4">
-        {% set entrees = [
-          { name: "Doner Gyro", desc: "Layers of marinated ground and sliced, beef and lamb mixed wrapped around the large vertical split and grilled in front of an ingenious herd of charcoal fire", price: "$20.99" },
-          { name: "Adana Kebab", desc: "Ground lamb and beef mixed flavored with red bell peppers, onion, and special herbs", price: "$20.99" },
-          { name: "Chicken Kebab", desc: "Tender chunks of chicken breast marinated with Chef's own blend of herbs", price: "$20.99" },
-          { name: "Kofte Kebab", desc: "Ground lamb and beef mixed flavored with parsley, onion, and special herbs", price: "$20.99" },
-          { name: "Grilled Salmon", desc: "Served with side salad, rice, pita bread and Tzatziki sauce", price: "$25.99" },
-          { name: "Lamb Shish Kebab", desc: "Special marinated cubes of baby lamb grilled to delight on skewers", price: "$23.99" },
-          { name: "Lamb Chops", desc: "Perfectly marinated grilled baby lamb chops", price: "$35.99" },
-          { name: "Falafel Plate", desc: "Garlic, onion, parsley, ground chick peas, zukkini, and special herbs", price: "$18.99" },
-          { name: "Mix Grill Platter", desc: "1 pc lamb chop, 2 pc chicken, 2 pc lambs, 1 pc kofte, and gyro", price: "$39.99" },
-          { name: "Skirt Steak", desc: "Served with side salad, rice, pita bread and Tzatziki sauce", price: "$25.99" }
-        ] %}
-        {% for item in entrees %}
-        <div class="menu-card rounded-2xl p-6 min-w-[280px] max-w-[300px] flex-shrink-0 snap-start">
-          <div class="flex justify-between items-start mb-3">
+        <div class="p-5">
+          <div class="flex justify-between items-start mb-2">
             <h4 class="font-display text-lg font-semibold text-charcoal">{{ item.name }}</h4>
-            <span class="text-terracotta font-semibold whitespace-nowrap ml-4">{{ item.price }}</span>
+            <span class="text-terracotta font-semibold whitespace-nowrap ml-3">{{ item.price }}</span>
           </div>
           <p class="text-charcoal-light text-sm leading-relaxed">{{ item.desc }}</p>
         </div>
-        {% endfor %}
       </div>
+      {% endfor %}
+      <div class="min-w-[1px] flex-shrink-0"></div>
     </div>
+  </div>
 
-    {# Sides #}
-    <div class="mb-14 fade-up">
-      <div class="flex items-center justify-between mb-6">
-        <h3 class="font-display text-2xl font-bold text-gold">Sides</h3>
-      </div>
-      <div class="flex gap-5">
-        {% set sides = [
-          { name: "Rice", price: "$6.99" },
-          { name: "French Fries", price: "$6.99" }
-        ] %}
-        {% for item in sides %}
-        <div class="menu-card rounded-2xl p-6 text-center min-w-[200px]">
+  {# Sides — full width slider #}
+  <div class="mb-16 fade-up">
+    <div class="max-w-7xl mx-auto px-6 mb-6">
+      <h3 class="font-display text-2xl font-bold text-gold">Sides</h3>
+    </div>
+    <div class="flex gap-5 pl-6 md:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))]">
+      {% set sides = [
+        { name: "Rice", price: "$6.99" },
+        { name: "French Fries", price: "$6.99" }
+      ] %}
+      {% for item in sides %}
+      <div class="menu-card rounded-2xl min-w-[240px] flex-shrink-0 overflow-hidden">
+        <div class="h-36 bg-cream-dark flex items-center justify-center">
+          <svg class="w-12 h-12 text-gold/30" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/></svg>
+        </div>
+        <div class="p-5 text-center">
           <h4 class="font-display text-lg font-semibold text-charcoal">{{ item.name }}</h4>
           <span class="text-terracotta font-semibold">{{ item.price }}</span>
         </div>
-        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {# Salads — full width slider #}
+  <div class="mb-16 fade-up">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between mb-6">
+      <h3 class="font-display text-2xl font-bold text-gold">Salads</h3>
+      <div class="flex gap-2">
+        <button onclick="slideLeft('salads')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
+          <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button onclick="slideRight('salads')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
+          <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
       </div>
     </div>
-
-    {# Salads #}
-    <div class="mb-14 fade-up">
-      <div class="flex items-center justify-between mb-6">
-        <h3 class="font-display text-2xl font-bold text-gold">Salads</h3>
-        <div class="flex gap-2">
-          <button onclick="slideLeft('salads')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
-            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-          </button>
-          <button onclick="slideRight('salads')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
-            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-          </button>
+    <div id="salads" class="slider-track flex gap-5 overflow-x-auto scroll-smooth pb-4 pl-6 md:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))]">
+      {% set salads = [
+        { name: "Sheppard Salad", desc: "Chopped tomato, bell peppers, onions, cucumbers, parsley, sumac, and traditional Turkish dressing", price: "$14.99" },
+        { name: "Greek Salad", desc: "Lettuce, tomato, cucumber, onion, feta cheese and Kalamata olives with Greek dressing", price: "$15.99" },
+        { name: "House Salad", desc: "Lettuce, tomatoes, onion, vinegar, fresh lemon juice, extra-virgin olive oil", price: "$12.99" },
+        { name: "Ezme Salad", desc: "Peeled tomatoes, onion, clove garlic, chili peppers, parsley, fresh lemon juice, sumac, pepper paste", price: "$15.99" }
+      ] %}
+      {% for item in salads %}
+      <div class="menu-card rounded-2xl min-w-[280px] max-w-[300px] flex-shrink-0 snap-start overflow-hidden">
+        <div class="h-44 bg-cream-dark flex items-center justify-center">
+          <svg class="w-12 h-12 text-gold/30" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/></svg>
         </div>
-      </div>
-      <div id="salads" class="slider-track flex gap-5 overflow-x-auto scroll-smooth pb-4">
-        {% set salads = [
-          { name: "Sheppard Salad", desc: "Chopped tomato, bell peppers, onions, cucumbers, parsley, sumac, and traditional Turkish dressing", price: "$14.99" },
-          { name: "Greek Salad", desc: "Lettuce, tomato, cucumber, onion, feta cheese and Kalamata olives with Greek dressing", price: "$15.99" },
-          { name: "House Salad", desc: "Lettuce, tomatoes, onion, vinegar, fresh lemon juice, extra-virgin olive oil", price: "$12.99" },
-          { name: "Ezme Salad", desc: "Peeled tomatoes, onion, clove garlic, chili peppers, parsley, fresh lemon juice, sumac, pepper paste", price: "$15.99" }
-        ] %}
-        {% for item in salads %}
-        <div class="menu-card rounded-2xl p-6 min-w-[280px] max-w-[300px] flex-shrink-0 snap-start">
-          <div class="flex justify-between items-start mb-3">
+        <div class="p-5">
+          <div class="flex justify-between items-start mb-2">
             <h4 class="font-display text-lg font-semibold text-charcoal">{{ item.name }}</h4>
-            <span class="text-terracotta font-semibold whitespace-nowrap ml-4">{{ item.price }}</span>
+            <span class="text-terracotta font-semibold whitespace-nowrap ml-3">{{ item.price }}</span>
           </div>
           <p class="text-charcoal-light text-sm leading-relaxed">{{ item.desc }}</p>
         </div>
-        {% endfor %}
+      </div>
+      {% endfor %}
+      <div class="min-w-[1px] flex-shrink-0"></div>
+    </div>
+  </div>
+
+  {# Sandwiches & Wraps — full width slider #}
+  <div class="mb-16 fade-up">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between mb-2">
+      <h3 class="font-display text-2xl font-bold text-gold">Sandwiches & Wraps</h3>
+      <div class="flex gap-2">
+        <button onclick="slideLeft('sandwiches')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
+          <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <button onclick="slideRight('sandwiches')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
+          <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        </button>
       </div>
     </div>
-
-    {# Sandwiches & Wraps #}
-    <div class="mb-14 fade-up">
-      <div class="flex items-center justify-between mb-2">
-        <h3 class="font-display text-2xl font-bold text-gold">Sandwiches & Wraps</h3>
-        <div class="flex gap-2">
-          <button onclick="slideLeft('sandwiches')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
-            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-          </button>
-          <button onclick="slideRight('sandwiches')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
-            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-          </button>
+    <p class="max-w-7xl mx-auto px-6 text-charcoal-light text-sm mb-6">Served with French Fries</p>
+    <div id="sandwiches" class="slider-track flex gap-5 overflow-x-auto scroll-smooth pb-4 pl-6 md:pl-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))]">
+      {% set sandwiches = [
+        { name: "Chicken", sandwich: "$12.99", wrap: "$13.99" },
+        { name: "Lamb Shish", sandwich: "$13.99", wrap: "$14.99" },
+        { name: "Kofte", sandwich: "$12.99", wrap: "$13.99" },
+        { name: "Adana Kebab", sandwich: "$13.99", wrap: "$13.99" },
+        { name: "Veggie Kebab", sandwich: "$12.99", wrap: "$13.99" },
+        { name: "Falafel", sandwich: "$12.99", wrap: "$13.99" },
+        { name: "Gyro", sandwich: "$12.99", wrap: "$13.99" }
+      ] %}
+      {% for item in sandwiches %}
+      <div class="menu-card rounded-2xl min-w-[260px] flex-shrink-0 snap-start overflow-hidden">
+        <div class="h-44 bg-cream-dark flex items-center justify-center">
+          <svg class="w-12 h-12 text-gold/30" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/></svg>
         </div>
-      </div>
-      <p class="text-charcoal-light text-sm mb-6">Served with French Fries</p>
-      <div id="sandwiches" class="slider-track flex gap-5 overflow-x-auto scroll-smooth pb-4">
-        {% set sandwiches = [
-          { name: "Chicken", sandwich: "$12.99", wrap: "$13.99" },
-          { name: "Lamb Shish", sandwich: "$13.99", wrap: "$14.99" },
-          { name: "Kofte", sandwich: "$12.99", wrap: "$13.99" },
-          { name: "Adana Kebab", sandwich: "$13.99", wrap: "$13.99" },
-          { name: "Veggie Kebab", sandwich: "$12.99", wrap: "$13.99" },
-          { name: "Falafel", sandwich: "$12.99", wrap: "$13.99" },
-          { name: "Gyro", sandwich: "$12.99", wrap: "$13.99" }
-        ] %}
-        {% for item in sandwiches %}
-        <div class="menu-card rounded-2xl p-6 min-w-[240px] flex-shrink-0 snap-start">
+        <div class="p-5">
           <h4 class="font-display text-lg font-semibold text-charcoal mb-3">{{ item.name }}</h4>
           <div class="flex justify-between text-sm">
             <span class="text-charcoal-light">Sandwich</span>
@@ -284,72 +309,58 @@ description: Authentic Turkish and Mediterranean cuisine in the heart of Miami B
             <span class="text-terracotta font-semibold">{{ item.wrap }}</span>
           </div>
         </div>
-        {% endfor %}
       </div>
+      {% endfor %}
+      <div class="min-w-[1px] flex-shrink-0"></div>
     </div>
+  </div>
 
-    {# Desserts #}
-    <div class="mb-14 fade-up">
-      <div class="flex items-center justify-between mb-6">
-        <h3 class="font-display text-2xl font-bold text-gold">Desserts</h3>
-        <div class="flex gap-2">
-          <button onclick="slideLeft('desserts')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
-            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-          </button>
-          <button onclick="slideRight('desserts')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
-            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-          </button>
+  {# Desserts & Beverages — side by side lists #}
+  <div class="max-w-7xl mx-auto px-6 fade-up">
+    <div class="grid md:grid-cols-2 gap-12 md:gap-16">
+      {# Desserts #}
+      <div>
+        <h3 class="font-display text-2xl font-bold text-gold mb-6">Desserts</h3>
+        <div class="space-y-0">
+          {% set desserts = [
+            { name: "Baklava (4 pieces)", price: "$8" },
+            { name: "Revani", price: "$8" },
+            { name: "Tiramisu", price: "$8" },
+            { name: "Carrot Cake", price: "$8" },
+            { name: "Key Lime Pie", price: "$8" },
+            { name: "New York Cheesecake", price: "$8" }
+          ] %}
+          {% for item in desserts %}
+          <div class="flex justify-between items-center py-4 {{ 'border-b border-gold/10' if not loop.last }}">
+            <span class="font-display font-semibold text-charcoal">{{ item.name }}</span>
+            <span class="text-terracotta font-semibold">{{ item.price }}</span>
+          </div>
+          {% endfor %}
         </div>
       </div>
-      <div id="desserts" class="slider-track flex gap-5 overflow-x-auto scroll-smooth pb-4">
-        {% set desserts = [
-          { name: "Baklava (4 pieces)", price: "$8" },
-          { name: "Revani", price: "$8" },
-          { name: "Tiramisu", price: "$8" },
-          { name: "Carrot Cake", price: "$8" },
-          { name: "Key Lime Pie", price: "$8" },
-          { name: "New York Cheesecake", price: "$8" }
-        ] %}
-        {% for item in desserts %}
-        <div class="menu-card rounded-2xl p-6 text-center min-w-[200px] flex-shrink-0 snap-start">
-          <h4 class="font-display text-lg font-semibold text-charcoal">{{ item.name }}</h4>
-          <span class="text-terracotta font-semibold">{{ item.price }}</span>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
 
-    {# Beverages #}
-    <div class="fade-up">
-      <div class="flex items-center justify-between mb-6">
-        <h3 class="font-display text-2xl font-bold text-gold">Beverages</h3>
-        <div class="flex gap-2">
-          <button onclick="slideLeft('beverages')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
-            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
-          </button>
-          <button onclick="slideRight('beverages')" class="slider-arrow w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center hover:bg-gold/10 transition-colors">
-            <svg class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-          </button>
+      {# Beverages #}
+      <div>
+        <h3 class="font-display text-2xl font-bold text-gold mb-6">Beverages</h3>
+        <div class="space-y-0">
+          {% set beverages = [
+            { name: "Soda", price: "$2.50" },
+            { name: "Ayran", price: "$4.00" },
+            { name: "Gatorade", price: "$3.50" },
+            { name: "Water", price: "$3.00" },
+            { name: "Perrier", price: "$3.00" },
+            { name: "Lemonade", price: "$3.50" },
+            { name: "Coffee", price: "$3.50" },
+            { name: "Tea", price: "$2.50" },
+            { name: "Turkish Gazoz", price: "$3.00" }
+          ] %}
+          {% for item in beverages %}
+          <div class="flex justify-between items-center py-4 {{ 'border-b border-gold/10' if not loop.last }}">
+            <span class="font-display font-semibold text-charcoal">{{ item.name }}</span>
+            <span class="text-terracotta font-semibold">{{ item.price }}</span>
+          </div>
+          {% endfor %}
         </div>
-      </div>
-      <div id="beverages" class="slider-track flex gap-5 overflow-x-auto scroll-smooth pb-4">
-        {% set beverages = [
-          { name: "Soda", price: "$2.50" },
-          { name: "Ayran", price: "$4.00" },
-          { name: "Gatorade", price: "$3.50" },
-          { name: "Water", price: "$3.00" },
-          { name: "Perrier", price: "$3.00" },
-          { name: "Lemonade", price: "$3.50" },
-          { name: "Coffee", price: "$3.50" },
-          { name: "Tea", price: "$2.50" },
-          { name: "Turkish Gazoz", price: "$3.00" }
-        ] %}
-        {% for item in beverages %}
-        <div class="menu-card rounded-2xl p-5 text-center min-w-[160px] flex-shrink-0 snap-start">
-          <h4 class="font-display font-semibold text-charcoal">{{ item.name }}</h4>
-          <span class="text-terracotta font-semibold text-sm">{{ item.price }}</span>
-        </div>
-        {% endfor %}
       </div>
     </div>
 
