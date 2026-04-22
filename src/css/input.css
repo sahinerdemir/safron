@@ -73,7 +73,7 @@ html {
 }
 @media (min-width: 768px) {
   .slider-container {
-    padding-left: max(1.5rem, calc((100vw - 72rem) / 2 + 1.5rem));
+    padding-left: max(1.5rem, calc((100vw - 80rem) / 2 + 1.5rem));
   }
 }
 
