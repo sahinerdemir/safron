@@ -59,14 +59,18 @@
         const gap = parseFloat(style.gap) || 20;
         return this.cards[0].offsetWidth + gap;
       }
+      getMaxOffset() {
+        const gap = parseFloat(getComputedStyle(this.track).gap) || 20;
+        const totalW = this.cards.length * this.getCardWidth() - gap;
+        return Math.max(0, totalW - this.container.offsetWidth);
+      }
       getMaxIndex() {
-        const containerW = this.container.offsetWidth;
-        const totalW = this.cards.length * this.getCardWidth() - (parseFloat(getComputedStyle(this.track).gap) || 20);
-        return Math.max(0, Math.ceil((totalW - containerW) / this.getCardWidth()));
+        return Math.max(0, this.cards.length - Math.floor(this.container.offsetWidth / this.getCardWidth()));
       }
       goTo(i) {
         this.index = Math.max(0, Math.min(i, this.getMaxIndex()));
-        this.track.style.transform = `translateX(-${this.index * this.getCardWidth()}px)`;
+        const offset = Math.min(this.index * this.getCardWidth(), this.getMaxOffset());
+        this.track.style.transform = `translateX(-${offset}px)`;
         this.updateButtons();
       }
       prev() { this.goTo(this.index - 1); }
@@ -85,7 +89,7 @@
         if (!this.isDragging) return;
         const x = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
         this.dragOffset = x - this.dragStartX;
-        const base = this.index * this.getCardWidth();
+        const base = Math.min(this.index * this.getCardWidth(), this.getMaxOffset());
         this.track.style.transform = `translateX(${-base + this.dragOffset}px)`;
       }
       onDragEnd() {
