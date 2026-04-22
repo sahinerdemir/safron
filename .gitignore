@@ -2,4 +2,3 @@ node_modules/
 _site/
 src/css/output.css
 .DS_Store
-src/images/background.mp4
