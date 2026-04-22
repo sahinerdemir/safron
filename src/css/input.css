@@ -10,8 +10,8 @@
   --color-olive-light: #7a8b6a;
   --color-charcoal: #2c2c2c;
   --color-charcoal-light: #4a4a4a;
-  --color-gold: #c9a96e;
-  --color-gold-light: #dfc598;
+  --color-gold: #c4654a;
+  --color-gold-light: #d4813b;
   --color-spice: #d4813b;
   --color-sage: #b8c5a8;
   --font-display: "Playfair Display", serif;
@@ -115,5 +115,5 @@ html {
   content: "";
   flex: 1;
   height: 1px;
-  background: linear-gradient(to right, transparent, #c9a96e40, transparent);
+  background: linear-gradient(to right, transparent, #c4654a40, transparent);
 }
