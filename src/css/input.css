@@ -65,6 +65,23 @@ html {
   animation: float 3s ease-in-out infinite;
 }
 
+.slider-track {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-snap-type: x mandatory;
+}
+.slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-arrow {
+  cursor: pointer;
+  user-select: none;
+}
+.slider-arrow:active {
+  transform: scale(0.92);
+}
+
 .divider-ornament {
   display: flex;
   align-items: center;
