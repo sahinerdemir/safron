@@ -65,6 +65,15 @@ html {
   animation: float 3s ease-in-out infinite;
 }
 
+.slider-padding {
+  padding-left: 1.5rem;
+}
+@media (min-width: 768px) {
+  .slider-padding {
+    padding-left: max(1.5rem, calc((100vw - 72rem) / 2 + 1.5rem));
+  }
+}
+
 .slider-track {
   scrollbar-width: none;
   -ms-overflow-style: none;
